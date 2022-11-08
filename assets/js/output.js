@@ -285,5 +285,16 @@ divQuote.append(quote, author);
 }
 
 parametersURL();
+getQuoteData()
 
+
+var goBackButton = $('<button type=button>go back</button>');
+mainContainer.append(goBackButton)
+
+goBackButton.click(goBack)
+
+function goBack() {
+    var urlIndex = './index.html'
+    location.assign(urlIndex);
+}
 
