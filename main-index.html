@@ -5,11 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- google fonts -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Document</title>
 </head>
 <body>
+
+        <main class="container-fluid">
+            <img src="./assets/image1.png" class= "image-fluid" alt="question mark background">
+
+            <div class="row justify-content-center">
+              <section class="col-12 col-md-4 col-lg-3 justify-content-right">
+                <form>
+                    <div class="form-group">
+                        <label for="trivia"> Trivia Category </label>
+                            <select class="form d-inline-flex p-2" id="exampleFormControlSelect1">
+                                <option> General Knowledge</option>
+                                <option> TV </option>
+                                <option> Movies </option>
+                                <option> Music </option>
+                            </select>
+                    </div>
+                </form>
+
+                <form>
+                    <div class="form-group">
+                        <label for="events"> Find Events Nearby! </label>
+                            <select class="form" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </div>
+                </form>
+
+                  <div class="card-footer">
+                    <button class="btn btn-block custom-btn btn-secondary" data-toggle="modal" data-target="#project-modal"> Submit </button>
+                  </div>
+                </div>
+              </section>
+
+    </div>
+
     
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
