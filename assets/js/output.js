@@ -149,6 +149,9 @@ function displayEventsData(data, eventsCategory) {
     for (var i = 0; i < data.events.length; i++) {
 
         var eachEvent = $('<div></div>');
+        
+        eachEvent.attr('data-num', i)
+
         eventsSection.append(eachEvent);
 
         var eventTitle = $('<p>');
@@ -162,22 +165,122 @@ function displayEventsData(data, eventsCategory) {
         eventVenue.text(data.events[i].venue.name + " | " + data.events[i].venue.display_location);
         var urlEvent = $('<a href="' + data.events[i].url + '" target="_blank">link to the event</a>');
 
-        eachEvent.append(eventTitle, eventDate, eventVenue, urlEvent);
+        var saveButton = $("<button>");
+        saveButton.attr({
+            type: 'button',
+            'data-num': i,
+        }).text('save').click(saveEventInfo);
+
+        eachEvent.append(eventTitle, eventDate, eventVenue, urlEvent, saveButton);
 
     };
+
+    displaySavedEvents();
+    
 }
 
-// buttons to save and clear events
+var eventsSavedArray = [];
+
+var eventsSavedSection = $('<section>');
+var divSavedEventsHeading = $('<h2>Saved Events</h2>');
+var clearButton = $("<button>");
+var divSavedEvents = $('<div>');
+mainContainer.append(eventsSavedSection);
+eventsSavedSection.append(divSavedEventsHeading, clearButton, divSavedEvents);
+
+clearButton.attr('type', 'button').text('clear').click(clearSavedEvents);
+
 
 function saveEventInfo() {
 
+
+    divSavedEvents.empty();
+    
+    var eventNum = $(this).attr('data-num');
+
+    var divEachEvent = $("div[data-num=" + eventNum + "]");
+
+    var storeEvent = {
+        number: eventNum,
+        title: divEachEvent.children().eq(0).text(),
+        date: divEachEvent.children().eq(1).text(),
+        venue: divEachEvent.children().eq(2).text(),
+        link: divEachEvent.children().eq(3).attr('href')
+    };
+
+    
+    if (eventsSavedArray.some((element => element.number == eventNum))) {
+        localStorage.setItem("savedEvents", JSON.stringify(eventsSavedArray));
+        displaySavedEvents();
+    } else {
+        eventsSavedArray.push(storeEvent);
+        localStorage.setItem("savedEvents", JSON.stringify(eventsSavedArray));
+        displaySavedEvents();
+    };
+
+}
+
+function displaySavedEvents() {
+    var getSavedEvents = JSON.parse(localStorage.getItem("savedEvents"));
+
+    if (getSavedEvents == null) {
+        return;
+    } else {
+   
+        for (var i = 0; i < getSavedEvents.length; i++) {
+            
+            var displayEachEvent = $('<div>');
+            var displayTitle = $('<p>');
+            var displayDate = $('<p>');
+            var displayVenue = $('<p>');
+            var displayLink = $('<a target="_blank">link to the event</a>');
+            
+            displayTitle.append(getSavedEvents[i].title);
+            displayDate.append(getSavedEvents[i].date);
+            displayVenue.append(getSavedEvents[i].venue);
+            displayLink.attr('href', getSavedEvents[i].link);
+
+            divSavedEvents.append(displayEachEvent);
+            displayEachEvent.append(displayTitle, displayDate, displayVenue, displayLink);
+
+        };
+        eventsSavedArray = getSavedEvents;
+    };
+}
+
+function clearSavedEvents() {
+    divSavedEvents.empty();
+    eventsSavedArray = [];
+    localStorage.clear();
 }
 
 function getQuoteData() {
 
+    var apiQuoteUrl = "https://api.goprogram.ai/inspiration"
+
+    fetch(apiQuoteUrl)
+        .then((response) => {
+            if (response.ok) {
+                response.json().then((data) => { displayQuoteData(data) })
+            } else {
+                alert(response.status + " | " + response.statusText);
+                return;
+            }
+        })
+        .catch((error) => { alert(error) });
+    return;
+
 }
 
-function displayQuoteData() {
+var divQuote = $('<div>')
+mainContainer.append(divQuote)
+
+function displayQuoteData(data) {
+
+var quote = $('<p>' + data.quote + '</p>')
+var author = $('<p>' + data.author + '</p>')
+
+divQuote.append(quote, author);
 
 }
 
