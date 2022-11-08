@@ -35,21 +35,21 @@ function parametersURL() {
     }
 }
 
-var mainContainer = $('<main>');
+var mainContainer = $('#main-container');
 $('body').prepend(mainContainer);
 
-var eventsSection = $('<div>');
-var triviaSection = $('<div>');
+var eventsSection = $('#events-container');
+var triviaSection = $('#trivia-container');
 mainContainer.append(triviaSection, eventsSection);
 
 var questionsTrivia = [];
 var correctAnswerTrivia = [];
 var questionNumber = 0;
 var totalResponses = 0;
-var askQuestion = $('<h2>');
-var answerChoiceList = $("<ul>");
+var askQuestion = $('<h2 class="text-center"></h2>');
+var answerChoiceList = $('<p class="text-center">');
 var feedback = $('<p>');
-var triviaCompleted = $('<h3>');
+var triviaCompleted = $('<p>');
 
 function getTriviaData() {
 
@@ -142,16 +142,16 @@ function getEventsData() {
 
 function displayEventsData(data, eventsCategory) {
 
-    var eventType = $('<h1>');
+    var eventType = $('<h2 class="text-center"></h2>');
     eventType.text(eventsCategory);
     eventsSection.append(eventType);
 
     for (var i = 0; i < data.events.length; i++) {
 
-        var eachEvent = $('<div>');
+        var eachEvent = $('<div></div>');
         eventsSection.append(eachEvent);
 
-        var eventTitle = $('<h2>');
+        var eventTitle = $('<p>');
         var eventDate = $('<p>');
         var eventVenue = $('<p>');
 
@@ -182,3 +182,5 @@ function displayQuoteData() {
 }
 
 parametersURL();
+
+
