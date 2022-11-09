@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,26 +12,99 @@
 </head>
 
 <body>
-        <!--modal pop out section-->
-    <header> </header>
+    <!--modal pop out section-->
+    <header>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+        data-whatever="@mdo">Menu</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+                <div class="modal-body">
+                    <form id="submit-inputs">
+                        <div class="form-group">
+                            <h2>Trivia Questions</h2>
+                            <label for="input-for-trivia" class="col-form-label">Number of Questions</label>
+                            <input type="number" class="form-control" id="input-for-trivia" value="3" min="1"
+                                max="20">
+
+                            <label for="select-trivia" class="col-form-label">Trivia Category</label>
+                            <select class="form-control" id="select-trivia">
+                                <option selected disabled>Choose:</option>
+                                <option value="9">General Knowledge</option>
+                                <option value="14">TV</option>
+                                <option value="12">Movies</option>
+                                <option value="11">Music</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <h2>Events Nearby</h2>
+                            <label for="postal-code-input" class="col-form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="postal-code-input">
+
+                            <label for="select-events" class="col-form-label">Event Type</label>
+                            <select class="form-control" id="select-events">
+                                <option selected disabled>Choose:</option>
+                                <option value="theater">Theater</option>
+                                <option value="concert">Concert</option>
+                                <option value="sports">Sports</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <h2>Choose:</h2>
+                            <label for="only-trivia" class="col-form-label">Trivia Only</label>
+                            <input type="radio" class="form-control" id="only-trivia" name="choose-output">
+
+                            <label for="only-events" class="col-form-label">Events Only</label>
+                            <input type="radio" class="form-control" id="only-events" name="choose-output">
+
+                            <label for="both-trivia-events" class="col-form-label">Trivia and Events</label>
+                            <input type="radio" checked class="form-control" id="both-trivia-events"
+                                name="choose-output">
+                        </div>
+
+                        <p id="input-req"></p>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </header>
 
     <main class="container jumbotron" id="main-container">
 
-            <!-- trivia output section-->
-        <div class="p-5 container justify-content-center align-items-center" id="trivia-container"></div> 
+        <!-- trivia output section-->
+        <div class="p-5 container justify-content-center align-items-center" id="trivia-container"></div>
 
-            <!-- events output section-->
+        <!-- events output section-->
         <div class="p-5 container justify-content-center align-items-center" id="events-container"></div>
 
 
-            <!-- inspirational quotes section-->
+        <!-- inspirational quotes section-->
         <p></p>
 
-            <!-- div for local storage -->
+        <!-- div for local storage -->
         <div></div>
 
     </main>
-    
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
@@ -38,4 +112,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="./assets/js/output.js"></script>
 </body>
+
 </html>
