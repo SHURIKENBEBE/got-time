@@ -1,3 +1,4 @@
+var dateTime = new Date();
 var onlyTriviaInput = $('#trivia-only');
 var inputTrivia = $('#input-trivia');
 var selectTrivia = $('#trivia-select');
@@ -7,6 +8,12 @@ var inputEvents = $('#postal-code');
 var selectEvents = $('#events-select');
 var formInput = $('#form-submit');
 var requiredInput = $('#input-required');
+
+function newTime() {
+    const timeDisplay = $(".time");
+    timeDisplay.text(moment().format('MMM DD YYYY hh:mm:ss a'))
+  }
+    setInterval(newTime, 1000);
 
 function searchSubmit(event) {
 

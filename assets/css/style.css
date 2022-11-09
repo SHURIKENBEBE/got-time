@@ -1,3 +1,15 @@
-img {
-    background-size: cover;
+/* img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+} */
+:root {
+    --light: #fffaf7;
+   
+  }
+.app-title {
+    font-family: 'Rubik Bubbles', cursive;
+    
+    color: var(--light);
 }
