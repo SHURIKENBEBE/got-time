@@ -3,6 +3,20 @@ var triviaCategory;
 var eventsNumber;
 var eventsCategory;
 
+// modal
+var reqInput = $('#input-req');
+var onlyTrivia = $('#only-trivia');
+var onlyEvents = $('#only-events');
+
+var triviaInput = $('#input-for-trivia');
+var triviaSelect = $('#select-trivia');
+
+var eventsInput = $('#postal-code-input');
+var eventsSelect = $('#select-events');
+
+var submitInputsForm = $('#submit-inputs');
+
+
 function parametersURL() {
 
     var stringQuery = document.location.search;
@@ -35,12 +49,49 @@ function parametersURL() {
     }
 }
 
+submitInputsForm.on('submit', (e) => {
+    e.preventDefault()
+    switch (true) {
+
+        case (onlyTrivia.is(":checked")):
+            if (!triviaInput.val() || !triviaSelect.val()) {
+                reqInput.text('Trivia: Search inputs are required!');
+                return;
+            } else {
+                var urlQuery = './output.html?inputTrivia=' + triviaInput.val() + '&categoryTrivia=' + triviaSelect.val();
+                location.assign(urlQuery);
+            }
+            break;
+
+        case (onlyEvents.is(":checked")):
+            if (!eventsInput.val() || !eventsSelect.val()) {
+                reqInput.text('Events: Search inputs are required!');
+                return;
+            } else {
+                var urlQuery = './output.html?inputEvents=' + eventsInput.val() + '&categoryEvents=' + eventsSelect.val();
+                location.assign(urlQuery);
+            }
+            break;
+
+        default:
+            if (!triviaInput.val() || !triviaSelect.val() || !eventsInput.val() || !eventsSelect.val()) {
+                reqInput.text('Trivia and Events: Search inputs are required!');
+                return;
+            } else {
+                var urlQuery = './output.html?inputTrivia=' + triviaInput.val() + '&categoryTrivia=' + triviaSelect.val() + '&inputEvents=' + eventsInput.val() + '&categoryEvents=' + eventsSelect.val();
+                location.assign(urlQuery);
+            }
+            break;
+    }
+})
+
+
 var mainContainer = $('#main-container');
-$('body').prepend(mainContainer);
+$('body').eq(1).prepend(mainContainer);
 
 var eventsSection = $('#events-container');
 var triviaSection = $('#trivia-container');
-mainContainer.append(triviaSection, eventsSection);
+mainContainer.eq(1).append(triviaSection, eventsSection);
 
 var questionsTrivia = [];
 var correctAnswerTrivia = [];
@@ -76,15 +127,18 @@ function getTriviaData() {
                     displayTriviaData()
                 })
             } else {
-                alert(response.status + " | " + response.statusText);
+                $('#alerts').text(response.status + " | " + response.statusText);
                 return;
             }
         })
-        .catch((error) => { alert(error) });
+        .catch((error) => { $('#alerts').text(error) });
     return;
 }
 
 function displayTriviaData() {
+
+    triviaSection.empty();
+    answerChoiceList.empty();
 
     askQuestion.text(questionsTrivia[questionNumber]);
     triviaSection.append(askQuestion, answerChoiceList, feedback);
@@ -132,15 +186,17 @@ function getEventsData() {
             if (response.ok) {
                 response.json().then((data) => { displayEventsData(data, eventsCategory) })
             } else {
-                alert(response.status + " | " + response.statusText);
+                $('#alerts').text(response.status + " | " + response.statusText);
                 return;
             }
         })
-        .catch((error) => { alert(error) });
+        .catch((error) => { $('#alerts').text(error) });
     return;
 }
 
 function displayEventsData(data, eventsCategory) {
+
+    eventsSection.empty();
 
     var eventType = $('<h2 class="text-center"></h2>');
     eventType.text(eventsCategory);
@@ -263,11 +319,11 @@ function getQuoteData() {
             if (response.ok) {
                 response.json().then((data) => { displayQuoteData(data) })
             } else {
-                alert(response.status + " | " + response.statusText);
+                $('#alerts').text(response.status + " | " + response.statusText);
                 return;
             }
         })
-        .catch((error) => { alert(error) });
+        .catch((error) => { $('#alerts').text(error) });
     return;
 
 }
