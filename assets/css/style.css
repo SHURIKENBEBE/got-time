@@ -1,15 +1,55 @@
-/* img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 500px;
-} */
+
 :root {
-    --light: #fffaf7;
+    --light: #f4f3ee;
+    --pink: #FDC7F4;
+    --black: black;
+    --aqua: aquamarine;
+
    
   }
+
 .app-title {
-    font-family: 'Rubik Bubbles', cursive;
+    font-family: 'Monoton', cursive;
     
+    color: var(--pink);
+}
+
+.output-page {
+    background-color: var(--black);
+
+    height: 100vh;
+}
+
+.time {
     color: var(--light);
+}
+
+h2 {
+    font-family: 'Audiowide', cursive;
+
+    color: var(--aqua)
+}
+
+label {
+    font-family: 'Forum', cursive; ;
+
+    color: var(--light)
+}
+
+.btn-block {
+    font-family: 'Bungee Inline', cursive;
+
+    background-color: var(--pink)
+}
+
+.btn-block:hover {
+    color: var(--light);
+}
+
+.time {
+    font-family: 'Source Code Pro', monospace;
+}
+
+.trivia-category {
+    display: block;
 }
