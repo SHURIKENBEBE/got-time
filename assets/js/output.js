@@ -133,7 +133,7 @@ function getTriviaData() {
                     displayTriviaData()
                 })
             } else {
-                $('#alerts').text(response.status + " | " + response.statusText);
+                $('#alerts').text(response.status);
                 return;
             }
         })
@@ -192,7 +192,7 @@ function getEventsData() {
             if (response.ok) {
                 response.json().then((data) => { displayEventsData(data, eventsCategory) })
             } else {
-                $('#alerts').text(response.status + " | " + response.statusText);
+                $('#alerts').text(response.status);
                 return;
             }
         })
@@ -325,7 +325,7 @@ function getQuoteData() {
             if (response.ok) {
                 response.json().then((data) => { displayQuoteData(data) })
             } else {
-                $('#alerts').text(response.status + " | " + response.statusText);
+                $('#alerts').text(response.status);
                 return;
             }
         })
