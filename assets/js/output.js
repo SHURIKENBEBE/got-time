@@ -50,7 +50,13 @@ function parametersURL() {
 }
 
 submitInputsForm.on('submit', (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    if (isNaN(eventsInput.val()) || eventsInput.val().length > 5) {
+        reqInput.text('please check your input for the postal code');
+        return;
+    };
+
     switch (true) {
 
         case (onlyTrivia.is(":checked")):
