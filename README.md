@@ -10,13 +10,7 @@ At the bottom of the page, a quote along with the author's name is displayed to 
 
 The codebase for this web application can be accessed via the links below. The use of the following can be observed from there:  
 
-SeatGeek Platform's API
-Open Trivia Database
-https://api.goprogram.ai/inspiration/docs/
-jQuery
-Bootstrap
-Moment.js 
-Google Fonts
+SeatGeek Platform's API, Open Trivia Database, https://api.goprogram.ai/inspiration/docs/, jQuery, Bootstrap, Moment.js, and Google Fonts
 
 ## Links
 
