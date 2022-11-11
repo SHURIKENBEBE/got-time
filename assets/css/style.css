@@ -53,3 +53,19 @@ label {
 .trivia-category {
     display: block;
 }
+
+.events-content {
+    display: block;
+}
+
+#events-select {
+    width: 100%;
+}
+
+#trivia-select {
+    width: 100%;
+}
+
+#input-required {
+    color: red;
+}
