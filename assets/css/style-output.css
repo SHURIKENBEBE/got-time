@@ -1,13 +1,59 @@
-/* output css 
+/* output css */
 
 body {
-    background-image: url("../image1.png");
+    background-color: black;
     height: 100%;
+    width: 100%;
 
     background-position: center; 
     background-repeat: no-repeat;
     background-size: cover;
-    
+
+    object-fit: fill;
+    position: absolute;
+
+    color: azure;
+
 }
 
-*/
+
+#trivia-container{
+    margin: 2px; 
+    padding: 2px; 
+    font-family: 'Chango', cursive;
+    color: #FDC7F4;
+
+}
+
+.modal-content{
+    font-family: 'Michroma', sans-serif;
+    color: blueviolet;
+}
+
+.eventStyle{
+    font-family: 'Rubik Mono One', sans-serif;
+    -webkit-text-stroke: 1px aquamarine;
+}
+
+
+.quote-container{
+    font-family: 'Overpass', sans-serif;
+    font-style: italic;
+    font-size: 45px;
+    margin: auto;
+    -webkit-text-stroke: 1px #FDC7F4;
+}
+
+.card{
+    background-color: black;
+    border-color: aquamarine;
+ 
+}
+
+.backBtn{
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

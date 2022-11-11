@@ -143,7 +143,7 @@ function displayTriviaData() {
     askQuestion.text(questionsTrivia[questionNumber]);
     triviaSection.append(askQuestion, answerChoiceList, feedback);
 
-    answerChoiceList.append($('<li>True</li>'), $('<li>False</li>')).click(chooseAnswer);
+    answerChoiceList.append($('<li class= "btn btn-outline-success m-2">True</li>'), $('<li class= "btn btn-outline-danger m-2">False</li>')).click(chooseAnswer);
 
     questionNumber++;
 }
@@ -155,9 +155,9 @@ function chooseAnswer(e) {
     var questionIndex = (questionNumber - 1);
 
     if (selectedAnswer.textContent == correctAnswerTrivia[questionIndex]) {
-        feedback.text('correct')
+        feedback.text('Yay! You got it right, good job!')
     } else {
-        feedback.text('incorrect')
+        feedback.text('Oops!! You got it wrong /: Try Again?')
     }
     totalResponses++
 
@@ -168,7 +168,7 @@ function chooseAnswer(e) {
         answerChoiceList.empty();
         if (totalResponses == questionsTrivia.length) {
             triviaSection.append(triviaCompleted);
-            triviaCompleted.text('all done!');
+            triviaCompleted.text('All Done!');
         } else {
             displayTriviaData();
         };
@@ -198,21 +198,21 @@ function displayEventsData(data, eventsCategory) {
 
     eventsSection.empty();
 
-    var eventType = $('<h2 class="text-center"></h2>');
+    var eventType = $('<h2 class="eventStyle text-center text-capitalize"></h2>');
     eventType.text(eventsCategory);
     eventsSection.append(eventType);
 
     for (var i = 0; i < data.events.length; i++) {
 
-        var eachEvent = $('<div></div>');
+        var eachEvent = $('<div class="card text-center p-3 m-5"></div>');
         
         eachEvent.attr('data-num', i)
 
         eventsSection.append(eachEvent);
 
-        var eventTitle = $('<p>');
-        var eventDate = $('<p>');
-        var eventVenue = $('<p>');
+        var eventTitle = $('<h2 class="eventStyle">');
+        var eventDate = $('<h6 class="eventStyle">');
+        var eventVenue = $('<h3 class="eventStyle">');
 
         var dateLocal = data.events[i].datetime_local;
 
@@ -221,7 +221,7 @@ function displayEventsData(data, eventsCategory) {
         eventVenue.text(data.events[i].venue.name + " | " + data.events[i].venue.display_location);
         var urlEvent = $('<a href="' + data.events[i].url + '" target="_blank">link to the event</a>');
 
-        var saveButton = $("<button>");
+        var saveButton = $("<button >");
         saveButton.attr({
             type: 'button',
             'data-num': i,
@@ -237,10 +237,10 @@ function displayEventsData(data, eventsCategory) {
 
 var eventsSavedArray = [];
 
-var eventsSavedSection = $('<section>');
-var divSavedEventsHeading = $('<h2>Saved Events</h2>');
+var eventsSavedSection = $('<section class="m-2 p-5 text-center eventStyle">');
+var divSavedEventsHeading = $('<h2 class="m-2">Saved Events</h2>');
 var clearButton = $("<button>");
-var divSavedEvents = $('<div>');
+var divSavedEvents = $('<div class="m-2 p-5">');
 mainContainer.append(eventsSavedSection);
 eventsSavedSection.append(divSavedEventsHeading, clearButton, divSavedEvents);
 
@@ -328,7 +328,7 @@ function getQuoteData() {
 
 }
 
-var divQuote = $('<div>')
+var divQuote = $('<div class="text-center quote-container m-5 p-2">')
 mainContainer.append(divQuote)
 
 function displayQuoteData(data) {
@@ -344,7 +344,7 @@ parametersURL();
 getQuoteData()
 
 
-var goBackButton = $('<button type=button>go back</button>');
+var goBackButton = $('<button type="button" class="btn btn-outline-light backBtn m-5">go back</button>');
 mainContainer.append(goBackButton)
 
 goBackButton.click(goBack)
