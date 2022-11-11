@@ -19,6 +19,11 @@ function searchSubmit(event) {
 
     event.preventDefault();
 
+    if (isNaN(inputEvents.val()) || inputEvents.val().length > 5) {
+        requiredInput.text('please check your input for the postal code');
+        return;
+    };
+
     switch (true) {
 
         case (onlyTriviaInput.is(":checked")):
