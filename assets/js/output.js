@@ -269,9 +269,8 @@ function saveEventInfo() {
         venue: divEachEvent.children().eq(2).text(),
         link: divEachEvent.children().eq(3).attr('href')
     };
-
     
-    if (eventsSavedArray.some((element => element.number == eventNum))) {
+    if (eventsSavedArray.some((element => element.title == divEachEvent.children().eq(0).text()))  && eventsSavedArray.some((element => element.date == divEachEvent.children().eq(1).text()))) {
         localStorage.setItem("savedEvents", JSON.stringify(eventsSavedArray));
         displaySavedEvents();
     } else {
@@ -283,6 +282,9 @@ function saveEventInfo() {
 }
 
 function displaySavedEvents() {
+
+    divSavedEvents.empty();
+
     var getSavedEvents = JSON.parse(localStorage.getItem("savedEvents"));
 
     if (getSavedEvents == null) {
@@ -348,6 +350,7 @@ divQuote.append(quote, author);
 
 parametersURL();
 getQuoteData()
+displaySavedEvents()
 
 
 var goBackButton = $('<button type="button" class="btn btn-outline-light backBtn m-5">go back</button>');
